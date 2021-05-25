@@ -1,0 +1,101 @@
+
+html{
+    font-size: 100%;
+}
+
+*{
+    font-size: 1rem;
+}
+#titre{
+    /*texte*/
+        text-align:center;
+        width: 100%;
+        height: 20pt ;
+        font-size: 3rem;
+        margin-bottom: 1pt;
+        padding-bottom: 15pt;
+        margin-top: 1pt;
+    /*image
+        background-image: url(../images/jarditou_logo.jpg); 
+        background-repeat:no-repeat; 
+        background-size: 200pt;      */           
+    
+    }
+
+#logo{
+    display: flex;
+    margin: auto;
+    padding-top: 5pt;
+    max-width: 100%;
+    width:20rem;
+
+
+}
+
+/* menus */
+    nav{
+        background-color: black;
+        padding: 1pt;
+        margin-top: 5pt;
+        margin-bottom: 5pt;
+
+
+    }
+    nav a{
+        color: white;
+    }
+
+/*    nav li{
+        display: inline; 
+        
+} */
+#promotion{
+    width:100%
+}
+/* taille titre h1*/
+
+    h1{
+        font-size: 1.4rem;
+    }
+
+
+    #section, #section2{
+        width:100%;
+}
+
+aside{
+    display: none;
+}
+
+
+/*tableau*/
+    .tableau{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: max-content;
+        border-collapse: collapse;
+    }
+
+    thead tr td{
+        font-weight: bold;
+        padding-top: 10px;
+        padding-bottom: 10pt;
+        border-bottom: 3px solid black;  
+    }
+
+    td{
+        padding-top: 5px;
+        padding-left: 3px;
+        padding-right: 3px;
+        min-width: 2rem;
+        border: 1px solid black;     
+    }   
+    tbody{
+        height: 3rem;
+    }
+    tbody img{
+        width: 2rem;
+        height: auto;
+    }
+      

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <!--   <link rel="stylesheet" href= "CSS/jarditou.css"/> -->
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="CSS/responsive-small.css">
+    <link rel="stylesheet" media="screen and (min-width: 769px)" href="CSS/responsive-large.css">
+</head>
+<body>
+    <header>
+        <p id="titre">Tout le jardin</p>
+        <img id="logo" src="images/jarditou_logo.jpg" alt="logo">
+    </header>
+    <nav>
+        <ul>
+        <li><a href="index.html" title="Accueil">Accueil</a></li>
+        <li><a href="tableau.html" title="Tableau">Tableau</a></li>
+        <li><a href="contact.html" title="contact">Formulaire</a></li>
+        </ul>
+    </nav>
+        <div>
+        <img src="images/promotion.jpg" alt="promotion" title="promotion" id="promotion">
+    </div>
+    <div class="main">
+        <section id="section2">
+            <h1>Contact</h1>
+            <hr>
+            <form action="http://bienvenu.net/script.php" method="GET">
+                <p> * ces zones sont obligatoires</p>
+                <fieldset>
+                    <legend>Vos Coordonnées</legend>
+                    <label for="lastname">Votre Nom* :</label><br><input type="text" placeholder="Nom" name="lastname" id="lastname" required><br>
+                    <label for="firstname">Votre prénom* :</label><br><input type="text" placeholder="Prénom" name="firstname" id="firstname" required><br><br>
+                    <label>Sexe* :</label>
+                        <input type="radio" name="féminin" class="sex_radio">féminin
+                        <input type="radio" name="masculin" class="sex_radio">masculin <br>
+                    <label for="birthday">Date de naissance* :</label><br><input type="date" name="birthday" id="birthday" required><br>
+                    <label for="code">Code postal* :</label><br><input type="text" placeholder="code postal" name="code" id="code"><br>
+                    <label for="address">Adresse :</label><br><input type="text" placeholder="adresse" name="address" id="address"><br>
+                    <label for="city">Ville :</label><br><input type="text" placeholder="ville" name="city" id="city"><br>
+                    <label for="address">Email :</label><br><input type="text" placeholder="dave.loper@afpa.fr" name="mail" id="mail"><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Votre demande</legend>
+                    <label for="subject">Sujet*: </label><br><input type="text" id="subject" list="liste" placeholder="Veuillez séléctionner un sujet" size="25" required >
+                        <datalist id="liste">
+                            <option>Mes commandes</option>
+                            <option>Question sur un produit</option>
+                            <option>Réclamation</option>
+                            <option>Autres</option>
+                        </datalist><br>
+                    <label for="question"> Votre question* :</label><br><textarea name="question" id="question"  rows="2" cols="25" placeholder="tapez votre question ici" required></textarea>
+                </fieldset><br>
+                <input type="checkbox" name="validation" id="validation" required><label for="validation"> * J'accepte le traitement informatique de ce formulaire</label><br><br>
+                <input type="button" value="Envoyer">  
+                <input type="button" value="Annuler"><br>
+        
+            </form>
+        
+        </section>
+<!--        <aside>
+            <p> [COLONNE DROITE]</p>
+        </aside> -->
+    </div>
+<footer>
+    <nav>
+        <ul>
+            <li><a href="legual.html" title="legual">Mentions légales</a></li>
+            <li><a href="horaires.html" title="horaires">Horaires</a></li>
+            <li><a href="plan.html" title="plan">Plan du site</a></li>
+        </ul>
+    </nav>
+</footer>
+
+</body>
+</html>
