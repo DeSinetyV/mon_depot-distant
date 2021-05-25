@@ -59,7 +59,7 @@ html{
     }
 
 
-    #section, #section2{
+    #section, .sans_aside{
         width:100%;
 }
 

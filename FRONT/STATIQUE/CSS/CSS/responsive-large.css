@@ -76,7 +76,7 @@ html{
     }
 
 /*mise en forme SANS aside */
-    #section2{
+    .sans_aside{
         width: 100%;
 }
 
