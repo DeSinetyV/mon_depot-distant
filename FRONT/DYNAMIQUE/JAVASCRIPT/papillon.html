@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercice</title>    
+  </head>
+  <body>
+     <div id = "emplacementPapillon">
+        <script>
+            var X = parseInt(prompt("entrez X: "));
+            var Y = parseInt(prompt("entrez N: "));
+
+            function produit(arg1,arg2){
+
+                resultat= arg1*arg2;
+
+            }
+
+            function afficheImg(image){
+
+               // var img = document.createElement("img");
+               // img.src = image;
+               // var papillon = document.getElementById("emplacementPapillon")
+               // papillon.appendChild(img);
+
+                document.write("<img src="+image+">")
+
+            }
+            afficheImg("images/papillon.jpg")
+
+
+            produit(X,Y)
+            carre = Math.pow(X,4);
+            document.write("<br>"+" le cube de "+X+" est égal à "+carre+"<br>");
+            document.write("\n le produit\n de "+X+" x "+Y+" est égal à "+resultat);
+
+
+
+        </script> 
+    </div>    
+  </body>
+</html>
