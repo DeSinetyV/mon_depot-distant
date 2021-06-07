@@ -248,7 +248,7 @@ strtok(liste1, "&", 2);
 var longueurTableau=parseInt(prompt("Entrez la longueur désiré du tableau: "));
 
 tableau = new Array(longueurTableau);
-//console.log(tableau);
+console.log(tableau);
 
 for (i = 0; i < tableau.length;i++){
     tableau[i] = prompt("Entrez la valeur "+ (i+1)+" de votre tableau" )
@@ -257,11 +257,11 @@ for (i = 0; i < tableau.length;i++){
 console.log(tableau);
 document.write(tableau);
 
-*//* EXERCICE JS 10-2 */
+/* EXERCICE JS 10-2 *//*
 
 function getInteger(){
-        parseInt(prompt("Veuiller saisir un nombre entier:"));
-        return;
+        entier = parseInt(prompt("Veuiller saisir un nombre entier:"));
+        return entier ;
 }
 
 function initTab(){
@@ -271,79 +271,105 @@ function initTab(){
 
 function saisieTab(){
     for (i = 0; i < tableau.length;i++){
-        tableau[i] = prompt("Entrez la valeur "+ (i+1)+" de votre tableau: ");
-        
+        tableau[i] = getInteger();
     }
 }
 
 function afficheTab (){
     for (i = 0; i < tableau.length;i++){
-        document.write(tableau[i]+ "<br>");
+        document.write("valeur "+(i+1)+ ": "+tableau[i]+ "<br>");
     }
 }
 
 function rechercheTab(){
     position= prompt("Quelle position du tableau voulez vous consulter ?:");
-    document.write(tableau[position -1]+ "<br>");
+    document.write(" emplacement "+position+": "+tableau[position -1]+ "<br>");
 }
 function infoTab(){
     var total = 0;
+    var max = 0
     for (i = 0; i < tableau.length;i++){
         total = total+parseInt(tableau[i]);
         console.log(total);
+        if (tableau[i]>max){
+            max = tableau[i];
+        }
     }
-    document.write(total/i)
-   // document.write(tableau.max())
-
-
-}
-function appel() {
-    var choix = prompt (" 1, 2 ou 3");
-    switch(choix){
-        case "1":
-            afficheTab();
-            appel();
-        case "2":
-            rechercheTab();
-            appel();
-        case "3":
-            infoTab();
-            appel();
-        case "0":
-            break;
-        default:
-            break;
-
-    }
-    
+    document.write("moyenne =" +total/i + "<br>")
+    document.write("max =" + max);
 }
 initTab();
 saisieTab();
-appel();
+afficheTab();
+rechercheTab();
+infoTab();
+
+*//* EXERCICE JS 10-3 *//*
+
+var tableau=[2,5,68,4,6, "z","b","a", "A", "=", "+" ];
+var stockage =0;
+var changement = 0;
+function ordre(){
+    var changement = 0; 
+    for( i = 0 ; i < tableau.length;i++){
+
+        if (tableau[i+1] < tableau[i]){
+            stockage = tableau[i+1];
+            tableau[i+1]=tableau[i];
+            tableau[i] = stockage;
+            changement++;        
+            console.log(tableau);
+        }
+    console.log(tableau);
+    }
+    if (changement > 0){
+        ordre();
+ }
+}
+
+ordre();
+
+
+CORRECTION INSTRUCTEUR
+
+
+var tableau=[2,5,68,4,6, "z","b","a", "A", "=", "+" ];
+
+for(i = tableau.length; i>=0; i--){
+
+    var valeur;
+    for (j = tableau.length; j>0; j--){
+        if(tableau[j]<tableau[i]){
+            valeur= tableau[j];
+            tableau[j] = tableau[i];
+            tableau[i] = valeur;
+        }
+        console.log(tableau);
+    }
+}
 
 
 
+*//* EXERCICE JS 13 */
+var tableau =[]
+var x
+var total = 0 
+while (x != 0){
+    x = parseInt(window.prompt("X:"));
+    tableau.push(x);
+    console.log(tableau);
+}
+tableau.pop();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function average(){
+    var i =0;
+    for (i in tableau){
+        total = parseInt(total + tableau[i]);
+    }
+    i++
+    moyenne = total/i;
+    console.log("la longueur du tableau est: "+tableau.length);
+    console.log("le total du tableau est: "+total);
+    console.log("la moyenne du tableau est: "+moyenne);
+}
+average()
