@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <title>exercice controle formulaire</title>
+    </head>
+    <body class="container-fluid">
+        <div class="row justify-content-center"></div>
+        <form class="" method="post">
+            <h3>Vos Coordonnées</h3>
+            <p>* Ces zones sont obligatoires pour envoyer le formulaire</p>
+            <label for="code">Société :</label><input type="text" name="societe" id="societe" required /><br>
+            <label class="col-3 pt-3 text-left pl-5"   for="contact">personne à contacter :</label><input class="col-3 pt-3" type="contact"name="contact" id="contact" required /><br>
+            <label class="col-3 pt-3 text-left pl-5" for="adresse">Adresse de l'entreprise :</label><textarea name="adresse" id="adresse" ></textarea><br>
+            <label class="pt-3" for="code">Code postal :</label><input type="text"name="code" id="code" required /><br>
+            <label class="pt-3" for="ville">ville :</label><input type="text"name="ville" id="ville" required /><br>
+            <label class="pt-3" for="mail">E-mail :</label><input type="text"name="mail" id="mail" required><br>
+            <label class="pt-3" for="phone">téléphone:</label><input type="text"name="phone" id="phone"><br>
+            <input class="mt-4" type="submit" id="idSubForm1" name="SubForm1" value="envoyer"> 
+            <input class="mt-4" type="reset" name="ResetForm1" value="Effacer">
+
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--      <script>
+            function checkForm(f) {
+                alert("Vous vous appelez : " + f.elements['nom'].value + " " + f.elements['prenom'].value);
+                return false; // do not submit the form
+            }
+        </script>
+    </head>
+        <h2>Intercepte la validation du formulaire</h2>
+        <form id="form1" name="form1" onSubmit="return checkForm(this);">
+            <input type="text" name= "nom" value="Dupont" />
+            <input type="text" name= "prenom" value="Eric" />
+            <input type="submit" id="idSubForm1" name="subForm1" value="Connection" />
+        </form>
+    -->
+    </body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="exercice16.js"></script>
+</html>
