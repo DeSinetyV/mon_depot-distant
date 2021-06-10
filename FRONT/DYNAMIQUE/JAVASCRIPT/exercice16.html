@@ -11,21 +11,71 @@
     </head>
     <body class="container-fluid">
         <div class="row justify-content-center"></div>
-        <form class="" method="post">
-            <h3>Vos Coordonnées</h3>
-            <p>* Ces zones sont obligatoires pour envoyer le formulaire</p>
-            <label for="code">Société :</label><input type="text" name="societe" id="societe" required /><br>
-            <label class="col-3 pt-3 text-left pl-5"   for="contact">personne à contacter :</label><input class="col-3 pt-3" type="contact"name="contact" id="contact" required /><br>
-            <label class="col-3 pt-3 text-left pl-5" for="adresse">Adresse de l'entreprise :</label><textarea name="adresse" id="adresse" ></textarea><br>
-            <label class="pt-3" for="code">Code postal :</label><input type="text"name="code" id="code" required /><br>
-            <label class="pt-3" for="ville">ville :</label><input type="text"name="ville" id="ville" required /><br>
-            <label class="pt-3" for="mail">E-mail :</label><input type="text"name="mail" id="mail" required><br>
-            <label class="pt-3" for="phone">téléphone:</label><input type="text"name="phone" id="phone"><br>
-            <input class="mt-4" type="submit" id="idSubForm1" name="SubForm1" value="envoyer"> 
-            <input class="mt-4" type="reset" name="ResetForm1" value="Effacer">
+            <form class="" method="POST" onSubmit="return verif(this);">
+                <h3>Vos Coordonnées</h3>
+                <p class="text-danger" >* Ces zones sont obligatoires pour envoyer le formulaire</p>
+                <label class="col-4 pb-3 text-left pl-5 ml-5 font-weight-bold align-middle" id="labelSociete" for="code">Société :</label>
+                <input class="col-3 pb-3 form-control-sm ml-3" type="text" name="societe" id="societe">
+                <span class="text-danger font-weight-bold align-middle">*</span><br>
+                <p class="text-danger text-center d-none " id=messageErreurSociete>Veuillez indiquer un nom de société</p>      
 
-        </form>
+                <label class="col-4 pb-3 text-left pl-5 ml-5 font-weight-bold align-middle" id="labelContact" for="contact">Personne à contacter :</label>
+                <input class="col-3 pb-3 form-control-sm ml-3" type="contact"name="contact" id="contact">
+                <span class="text-danger font-weight-bold align-middle">*</span><br>
+                <p class="text-danger text-center d-none" id=messageErreurContact>Veuillez indiquer une personne à contacter</p> 
 
+                <label class="col-4 pb-4 text-left pl-5 ml-5 font-weight-bold align-middle" for="adresse">Adresse de l'entreprise :</label>
+                <textarea class="col-3 pb-3 align-middle ml-3" name="adresse" id="adresse" ></textarea><br>
+
+                <label class="col-4 pb-3 text-left pl-5 ml-5 font-weight-bold align-middle" id="labelCode" for="code">Code postal :</label>
+                <input class="col-3 pb-3 form-control-sm ml-3" type="text"name="code" id="code">
+                <span class="text-danger font-weight-bold align-middle">*</span><br>
+                <p class="text-danger text-center d-none" id=messageErreurCode>Veuillez indiquer un code postal valide (5 chiffres)</p> 
+
+                <label class="col-4 pb-3 text-left pl-5 ml-5 font-weight-bold align-middle" id="labelVille" for="ville">Ville :</label>
+                <input class="col-3 pb-3 form-control-sm ml-3" type="text"name="ville" id="ville">
+                <span class="text-danger font-weight-bold align-middle">*</span><br>
+                <p class="text-danger text-center d-none" id=messageErreurVille>Veuillez indiquer une ville </p> 
+
+                <label class="col-4 pb-3 text-left pl-5 ml-5 font-weight-bold align-middle"id="labelMail" for="mail">E-mail :</label>
+                <input class="col-3 pb-3 form-control-sm ml-3" type="text"name="mail" id="mail">
+                <span class="text-danger font-weight-bold align-middle">*</span><br>
+                <p class="text-danger text-center d-none" id=messageErreurMail>Veuillez indiquer une adresse mail valide</p> 
+
+                <label class="col-4 pb-3 text-left pl-5 ml-5 font-weight-bold align-middle" for="phone">Téléphone:</label>
+                <input class="col-3 pb-3 form-control-sm ml-3" type="text"name="phone" id="phone"><br>
+                <div class="row">
+                    <div class="col-4 ml-5">
+                        <label class="pb-3 text-left pl-4 ml-2 font-weight-bold align-middle " for="liste">Selectionner l'environnement technique du projet :</label>
+                        <input class="ml-4 w-75" type="text" id="subject" list="liste" placeholder="Choisissez">
+                        <datalist class="" id="liste">
+                            <option value="Access">Access</option>
+                            <option value="Java">Java</option>
+                            <option value="Delphi">Delphi</option>
+                            <option value="Windev">Windev</option>
+                            <option value="Visual Basic">Visual Basic</option>
+                            <option value="Power Builder">Power Builder</option>
+                            <option value="Internet">Internet</option>
+                            <option value="Intranet">Intranet</option>
+                            <option value="Windows NT">Windows NT</option>
+                            <option value="Unix">Unix</option>
+                            <option value="SQL Server">SQL Server</option>
+                            <option value="Oracle">Oracle</option>
+                            <option value="Autres...">Autres...</option>
+                        </datalist>               
+                        <span class="text-danger font-weight-bold align-top">*</span><br>
+                    </div>
+                    <textarea class="col-3 mt-2 align-middle ml-4" name="details" id="details" ></textarea><br>
+                </div>
+                <p class="mt-2 text-danger text-center d-none" id="messageErreurSujet">Veuillez selectionner un sujet</p> 
+            
+            <div class=" row justify-content-center mt-5">
+                    <input class="mr-1" type="submit" id="idSubForm1" name="SubForm1" value="Envoyer"> 
+                    <input class="ml-1" type="reset" name="ResetForm1" value="Effacer">
+            </div> 
+  
+         </form>
+        </div>
 
 
 
