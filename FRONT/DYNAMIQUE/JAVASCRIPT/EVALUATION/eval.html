@@ -4,43 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href= "eval.css"/>
     <title>EVALUATION JAVASCRIPT</title>
 
 </head>
 <body>
 
-<div class="container-fluid">
-    <div class="row">   
-        <div class="col">
-            <h1 class="text-center">JAVASCRIPT</h1>
+<div  class="container-fluid border ">
+    <div  class="row">   
+        <div  class="col">
+            <h1 id="titre1" class="text-center">JAVASCRIPT</h1>
          </div>        
     </div>
 
-    <div class="row  border vh-100">
-        <div class="col-6 mt-5 text-center vh-100">
+    <div id="id2" class="row">
+        <div id="menuButton" class="col-6 text-center border p-2">
             <button id="Id_btn1" type="button" class="btn btn-primary">Exercice1</button>
             <button id="Id_btn2" type="button" class="btn btn-primary">Exercice2</button>
             <button id="Id_btn3" type="button" class="btn btn-primary">Exercice3</button>
             <button id="Id_btn4" type="button" class="btn btn-primary">Exercice4</button>        
+            <button id="Id_btn5" type="button" class="btn btn-primary">Exercice5</button>     
         </div>
-        <div class="col-6 mt-5 text-center">
-            <button id="Id_btn1" type="button" class="btn btn-primary">Exercice1</button>
-            <button id="Id_btn2" type="button" class="btn btn-primary">Exercice2</button>
-            <button id="Id_btn3" type="button" class="btn btn-primary">Exercice3</button>
-            <button id="Id_btn4" type="button" class="btn btn-primary">Exercice4</button>        
+        <div class="col-6 text-center border">
+      <h2 id="titreExo" class="pt-2"></h2>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-12">
-            <h3><p id="texte1"></p></h3>
-            <p id="texte2"></p>                
+    <div class="row" >
+        <div class="col-6 mt-3 text-center border">
+            <h2>Consignes exercice</h2>
+        </div>
+        <div class="col-6 mt-3 text-center border">
+            <h2>Code JAVASCRIPT</h2>
+        </div>
+    </div>
+
+    <div  class="row whiteText">
+        <div id="divConsignes" class="col-6 pt-5 border ">
+            <div id="exo1">
+                <h4 class= "mb-4 text-center"> Calcul du nombre de jeunes, de moyens et de vieux</h4>
+                <p>Il s'agit de dénombrer les personnes d'âge strictement inférieur à 20 ans, les personnes d'âge strictement supérieur à 40 ans et celles dont l'âge est compris entre 20 ans et 40 ans (20 ans et 40 ans y compris).</p>
+                <p>Le programme doit demander les âges successifs.</p>
+                <p>Le comptage est arrêté dès la saisie d'un centenaire. Le centenaire est compté.</p>
+                <p>Donnez le programme Javascript correspondant qui affiche les résultats.</p>
+                <button id="btn_Exo1" type="button" class="btn mb-2 btn-primary ml-5 mb-2">lancer l'exercice</button>     
+            </div>
+            <div id="exo2">
+                <h4 class= "mb-4 text-center">Table de multiplication</h4>
+                <p>Ecrivez une fonction qui affiche une table de multiplication.</p>
+                <p>Votre fonction doit prendre un paramètre qui permet d'indiquer quelle table afficher.</p>
+                <p>Par exemple, <code>TableMultiplication(7)</code> doit afficher : </p>
+                <p>1 x 7 = 7</p>
+                <p>2 x 7 = 14</p>
+                <p>3 x 7 = 21
+                ...</p>
+                <button id="btn_Exo2" type="button" class="btn mb-2 btn-primary ml-5 mb-2">lancer l'exercice</button>     
+            </div>
+            <div id="exo3">
+                <h4 class= "mb-4 text-center">Recherche d'un prénom</h4>
+                <p>Un prénom est saisi au clavier. On le recherche dans le tableau <code>tab</code> donné ci-après. </p>
+                <p>Si le prénom est trouvé, on l'élimine du tableau en décalant les cases qui le suivent, et en mettant à blanc la dernière case.
+                Si le prénom n'est pas trouvé un message d'erreur apparait et aucun prénom ne se supprime.</p>
+                <pre><code class="text-info"> var tab = ["Audrey", "Aurélien", "Flavien", "Jérémy", "Laurent", "Melik", "Nouara", "Salem", "Samuel", "Stéphane"];</code></pre>
+                <p>( exemple : [&quot;Audrey&quot;, &quot;Aurélien&quot;, &quot;Flavien&quot;, &quot;Jérémy&quot;, &quot;Laurent&quot;, &quot;Melik&quot;, &quot;Nouara&quot;, &quot;Salem&quot;, &quot;Samuel&quot;, &quot; &quot;]; )</p>
+                <button id="btn_Exo3" type="button" class="btn mb-2 btn-primary ml-5 mb-2">lancer l'exercice</button>     
+            </div>
+            <div id="exo4">
+                <h4 class= "mb-4 text-center">Total d'une commande</h4>
+                <p>A partir de la saisie du prix unitaire noté PU d'un produit et de la quantité commandée QTECOM, afficher
+                    le prix à payer PAP, en détaillant la remise REM et le port PORT, sachant que :</p>
+                    <ul>
+                    <li>TOT = ( PU * QTECOM )</li>
+                    <li>la remise est de 5% si TOT est compris entre 100 et 200 € et de 10% au-delà</li>
+                    <li>le port est gratuit si le prix des produits ( le total remisé ) est supérieur à 500 €. Dans le cas contraire, le
+                    port est de 2%</li>
+                    <li>la valeur minimale du port à payer est de 6 €</li>
+                    </ul>
+                    <p>Testez tous les cas possibles afin de vous assurez que votre script fonctionne.</p>
+                    <p><strong>Ci-dessous, un jeu de tests</strong> :</p>
+                    <ul>
+                    <li>Saisir 600 € et quantité = 1 : remise 10% (-60 €) soit 540,00 et frais port = 0; à payer : 540 € </li>
+                    <li>Saisir 501 € et quantité = 1 : remise 10% (-50,1 €) soit 450,90 et frais port 2% (de 450,90 €) soit +9,01 € ; à payer : 450,90+9.01 = 459,91 €. </li>
+                    <li>Saisir 100 € et quantité = 2 : 200 € donc remise 5% soit 190 € et frais de port 2% soit 3,8 € mini 6 €; à payer : 190+6 = 196 €  </li>
+                    <li>Saisir 3 € et quantité = 1 : remise 0, frais de port 2% soit 0.06 € donc le minimum de 6 € s'applique; à payer : 3+6 = 9 €</li>
+                    </ul>
+                    <button id="btn_Exo4" type="button" class="btn mb-2 btn-primary ml-5 mb-2">lancer l'exercice</button>     
+            </div>
+            <div id="exo5">
+                <h4 class= "mb-4 text-center">Vérification d'un formulaire</h4>
+                <p>Effectuez le contrôle de saisie de votre formulaire Jarditou en Javascript. </p>
+                <p>Lorsqu'une erreur est détectée, l'utilisateur doit en être informé grâce à l'affichage d'un message sous le champ concerné. </p>
+                <p>Le formulaire ne peut être envoyé que lorsque tout est bon.</p>
+                <button id="btn_Exo5" type="button" class="btn mb-2 btn-primary ml-5 mb-2">lancer l'exercice</button>     
+            </div>
+
+        </div>
+        <div class="col-6 pt-5 border">
+            <p>test</p>
+        </div>
+    </div>
+
+    <div  class="row">
+        <div class="col-12 border">
+          <h2 class="text-center">Resultat</h2>
+        </div>        
+    </div>
+    <div  class="row">
+        <div class="col-12 border">
+            <p id="resultat" class="text-primary">en attente du resultat</p>
         </div>        
     </div>
 
 </div>
 
-<script src="js/javascript.js"></script>
+<script src="eval.js"></script>
 
 </body>
 </html>

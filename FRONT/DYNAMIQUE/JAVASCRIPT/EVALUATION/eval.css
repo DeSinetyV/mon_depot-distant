@@ -1,0 +1,38 @@
+
+#id2{
+    background-color: violet;
+
+}
+
+html{
+    background-color: black;
+}
+
+div{
+    background-color: black;
+}
+
+#titre1{
+    color:blue;
+}
+
+
+#titreExo{
+    color: red;
+    font-size: larger;
+
+
+}
+
+h2{
+    color: red;
+
+
+}
+.whiteText{
+    color:white
+}
+
+#divConsignes{
+    height: 500px;
+}
