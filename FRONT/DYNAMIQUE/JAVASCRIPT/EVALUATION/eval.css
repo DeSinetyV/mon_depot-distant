@@ -1,9 +1,4 @@
 
-#id2{
-    background-color: violet;
-
-}
-
 html{
     background-color: black;
 }
@@ -34,5 +29,5 @@ h2{
 }
 
 #divConsignes{
-    height: 500px;
+    min-height: 500px;
 }

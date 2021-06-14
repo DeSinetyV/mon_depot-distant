@@ -163,7 +163,7 @@ while (i <= N){
     i++;
 
 }
-azerty
+
 *//* EXERCICE JS 08-05 *//*
 
 //var mot = prompt("Entrez un mot");

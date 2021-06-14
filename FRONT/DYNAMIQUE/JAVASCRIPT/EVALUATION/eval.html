@@ -10,10 +10,10 @@
 </head>
 <body>
 
-<div  class="container-fluid border ">
+<div  class="container-fluid border">
     <div  class="row">   
         <div  class="col">
-            <h1 id="titre1" class="text-center">JAVASCRIPT</h1>
+            <h1 id="titre1 " class="text-center">JAVASCRIPT</h1>
          </div>        
     </div>
 
@@ -41,6 +41,7 @@
 
     <div  class="row whiteText">
         <div id="divConsignes" class="col-6 pt-5 border ">
+<!-- CONSIGNES EXERCICE 1-->
             <div id="exo1">
                 <h4 class= "mb-4 text-center"> Calcul du nombre de jeunes, de moyens et de vieux</h4>
                 <p>Il s'agit de dénombrer les personnes d'âge strictement inférieur à 20 ans, les personnes d'âge strictement supérieur à 40 ans et celles dont l'âge est compris entre 20 ans et 40 ans (20 ans et 40 ans y compris).</p>
@@ -49,6 +50,7 @@
                 <p>Donnez le programme Javascript correspondant qui affiche les résultats.</p>
                 <button id="btn_Exo1" type="button" class="btn mb-2 btn-primary ml-5 mb-2">lancer l'exercice</button>     
             </div>
+<!-- CONSIGNES EXERCICE 2-->
             <div id="exo2">
                 <h4 class= "mb-4 text-center">Table de multiplication</h4>
                 <p>Ecrivez une fonction qui affiche une table de multiplication.</p>
@@ -60,6 +62,7 @@
                 ...</p>
                 <button id="btn_Exo2" type="button" class="btn mb-2 btn-primary ml-5 mb-2">lancer l'exercice</button>     
             </div>
+<!-- CONSIGNES EXERCICE 3-->
             <div id="exo3">
                 <h4 class= "mb-4 text-center">Recherche d'un prénom</h4>
                 <p>Un prénom est saisi au clavier. On le recherche dans le tableau <code>tab</code> donné ci-après. </p>
@@ -70,6 +73,7 @@
                 <button id="btn_Exo3" type="button" class="btn mb-2 btn-primary ml-5 mb-2">lancer l'exercice</button>     
             </div>
             <div id="exo4">
+<!-- CONSIGNES EXERCICE 4-->
                 <h4 class= "mb-4 text-center">Total d'une commande</h4>
                 <p>A partir de la saisie du prix unitaire noté PU d'un produit et de la quantité commandée QTECOM, afficher
                     le prix à payer PAP, en détaillant la remise REM et le port PORT, sachant que :</p>
@@ -91,22 +95,130 @@
                     <button id="btn_Exo4" type="button" class="btn mb-2 btn-primary ml-5 mb-2">lancer l'exercice</button>     
             </div>
             <div id="exo5">
+<!-- CONSIGNES EXERCICE 5-->
                 <h4 class= "mb-4 text-center">Vérification d'un formulaire</h4>
                 <p>Effectuez le contrôle de saisie de votre formulaire Jarditou en Javascript. </p>
                 <p>Lorsqu'une erreur est détectée, l'utilisateur doit en être informé grâce à l'affichage d'un message sous le champ concerné. </p>
                 <p>Le formulaire ne peut être envoyé que lorsque tout est bon.</p>
-                <button id="btn_Exo5" type="button" class="btn mb-2 btn-primary ml-5 mb-2">lancer l'exercice</button>     
+                <button type=button class="btn mb-2 btn-primary ml-5 mb-2" onclick=window.location.href='../contact.html'; value=Aller sur mon site />Ouvrir la page CONTACT du site Jarditou</button>     
             </div>
 
         </div>
-        <div class="col-6 pt-5 border">
-            <p>test</p>
+        <div id="code1" class="col-6 pt-5 border" >
+            <pre class=" whiteText brush: xml">
+function exo1(){
+    age=0;
+    tab=[];
+    var moins20=0; 
+    plus40=0;
+    milieu=0; 
+    i=0;
+
+    while(age !=100) {
+        age=parseInt(prompt("Veuillez saisir un age:"));
+        tab[i]=age;
+        if(age>40){
+            plus40 = plus40 +1;
+        }else if(age < 20){
+            moins20++;
+        }else{
+            milieu++;
+        }
+        i++;
+    }
+    document.getElementById("resultat").textContent = "il y a "+plus40+" personnes de plus de 40 ans, "+milieu+" personnes qui ont entre 20 et 40 ans et "+moins20+" qui ont moins de 20 ans.";
+}
+                
+        </div>
+        <div id="code2" class="col-6 pt-5 border ">
+            <pre class=" whiteText brush: Javascript">
+function exo2(){
+
+    document.getElementById("resultat").innerHTML = ""  
+
+    var X = parseInt(prompt("entrez la table de multiplication que vous voulez afficher: "));
+    table(X);
+
+    function table(nbr){
+        for (i=0;i <= 10;i++){
+            document.getElementById("resultat").innerHTML = document.getElementById("resultat").innerHTML +i + " X " + nbr +" = " + String(i*nbr)+"<\br>"
+        }    
+    }
+}
+        </div>
+        <div id="code3" class="col-6 pt-5 border ">
+            <pre class=" whiteText brush: xml">
+function exo3(){
+
+    var tab = ["Audrey", "Aurélien", "Flavien", "Jérémy", "Laurent", "Melik", "Nouara", "Salem", "Samuel", "Stéphane"];
+    var prenom = prompt("entrez un prénom: ");
+    // mise en forme prenom
+    prenom = firstLetterMaj(prenom);
+    position = tab.indexOf(prenom);
+    //Si le prenom est dans le tableau
+    if (position != -1){
+        tab[position] = "";
+        tab.sort();
+        tab2 =tab.splice(0, 1);
+        tab.push(tab2[0]);
+
+        document.getElementById("resultat").innerHTML = '["';
+        for (i=0; i< tab.length -1; i++){
+            document.getElementById("resultat").innerHTML = document.getElementById("resultat").innerHTML +tab[i]+'" ,"';
+        }
+        document.getElementById("resultat").innerHTML = document.getElementById("resultat").innerHTML+ ' "]';
+    }else{
+        document.getElementById("resultat").innerHTML ="Ce prénom n'apparait pas dans la liste";
+    }
+
+    // mise en forme prenom: 1 lettre MAJ, le reste en minuscule
+    function firstLetterMaj(string) {
+        string = string.toLowerCase();
+        return string = string.charAt(0).toUpperCase() + string.slice(1);
+    }
+}
+        </div>
+        <div id="code4" class="col-6 pt-5 border ">
+            <pre class=" whiteText brush: xml">
+function exo4(){
+
+    var PU = prompt("prix unitaire:");
+    var QTECOM = prompt("quantité commandé:");
+    TOT = PU*QTECOM;
+
+
+    if (TOT<100) {
+        REM = 0;
+        PORT = 6;
+        PAP = TOT + PORT - REM  ;
+    } else if (TOT >=100 & TOT <= 200) {
+        REM = TOT/20;
+        PORT = 6;
+        PAP = TOT + PORT - REM ;
+    } else if (TOT >200) {
+        REM = TOT/10;
+        if(TOT/50 < 6 ){
+            PORT=6;
+        }else if(TOT-REM <= 500){
+            PORT = (TOT-REM)/50;
+        }else{
+            PORT= 0;
+        }
+        PAP = TOT + PORT - REM  ;
+    }
+    console.log(REM);
+    console.log(PORT);
+    console.log(PAP);
+    document.getElementById("resultat").innerHTML ="Le prix à payer est de : "+ PAP.toFixed(2)+"€."
+
+}
+
         </div>
     </div>
 
     <div  class="row">
         <div class="col-12 border">
-          <h2 class="text-center">Resultat</h2>
+          <h2 class="text-center">Résultat</h2>
         </div>        
     </div>
     <div  class="row">
