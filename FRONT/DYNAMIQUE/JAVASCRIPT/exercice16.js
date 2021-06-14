@@ -1,7 +1,7 @@
 //var submit=document.getElementById("idSubForm1");
 //submit.addEventListener("click", verif);
 
-var filtreNom = new RegExp("^[A-Za-z0-9]");
+var filtreNom = new RegExp("^[A-Za-z0-9]+");
 var filtreMail=new RegExp("^[A-Za-z0-9.-_]+[@][A-Za-z0-9.-_]+[.][a-z]{2,4}$");
 var filtreCodePostal=new RegExp("^[0-9][0-9][0-9][0-9][0-9]$");
 
