@@ -37,6 +37,7 @@ function verif(){
         document.getElementById("errorFirstname").innerHTML = "*Veuillez entrer un prénom valide";
         erreur++;
      }
+
     var mail= document.getElementById("mail").value;
     console.log(mail);
     mail = filtreMail.test(mail);
@@ -90,7 +91,6 @@ function verif(){
         document.getElementById("errorSubject").innerHTML = "*Veuillez selectionner un sujet dans la liste";
         erreur++;
     }
-
 
     if(erreur >0){
         console.log("il reste "+ erreur+" erreurs !");
