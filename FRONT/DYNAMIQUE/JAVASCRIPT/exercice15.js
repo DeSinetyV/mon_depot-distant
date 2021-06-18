@@ -15,13 +15,12 @@ btn1.addEventListener("click",btn)
  *//* EXERCICE 15_1 *//*
 
 var btn1 = document.getElementById("btn1");
-
 btn1.addEventListener("click",btn);
 
 function btn(){
     var saisie = document.getElementById("text").value;
     alert("Vous avez saisi: "+ saisie );
- };*
+ };
 
  *//*  EXERCICE 15_2 */
  

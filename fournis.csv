@@ -1,0 +1,8 @@
+INSERT INTO `fournis` (`numfou`, `nomfou`, `ruefou`, `posfou`, `vilfou`, `confou`, `satisf`) 
+VALUES (120, 'GROBRIGAN', '20 RUE DU PAPIER', 92200, 'papercity', 'Georges', 8),
+       (540, 'ECLIPSE','53 RUE laisse flotter les rubans',78250, 'bugbugville', 'Nestor', 7),
+        (8700,'MEDICIS','120 rue des plantes',75014,'paris','lison',0),
+        (9120,'DISCOBOL','11 rue des sports',85100,'la roche sur yon','hercule',8),
+        (9150,'DEPANPAP','26 avenue des locomotives',59987,'coroncountry','pollux',5),
+        (9180,'HURRYTAPE','68 boulevard des octets',4044,'dumpville','track',0),
+

@@ -2,8 +2,8 @@
 
 function verif(){
 // expressions régulières 
-    var filtreNom = new RegExp("^[a-zA-Z '-]+$");
-    var filtrePrenom =  new RegExp("^[a-zA-Z -]+$");
+    var filtreNom = new RegExp("^[a-zéèêA-Z '-]+$");
+    var filtrePrenom =  new RegExp("^[a-zéèêA-Z -]+$");
     var filtreMail= new RegExp("^[0-9a-zA-Z._-]+@[0-9a-zA-Z._-]+[.][a-z]{2,5}$");
     var filtreDate = new RegExp("^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$");
     var filtreCodePostal=new RegExp("^[0-9]{5}$");

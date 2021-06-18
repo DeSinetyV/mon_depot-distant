@@ -27,7 +27,6 @@ function exo2(){
 
         /*   var X = parseInt(prompt("entrez la table de multiplication que vous voulez afficher: "));
             table(X);
-
             function table(nbr)
                 for (i=0;i <= 10;i++){
                     document.write(i + " nbr " + nbr +" = " + String(i*nbr)+"<br>") */
@@ -113,8 +112,9 @@ function exo4(){
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                            //HORS EVALUATION: configuration page EVAL.html
+                                                            //HORS EVALUATION: mise en forme page EVAL.html
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 // onClick boutons 1 à 5 
@@ -179,7 +179,7 @@ function clickbtn5(){       // fonction bouton 5
 
 
 function hidAll(){
-    document.getElementById("resultat").innerHTML = "En attente du résultat"  
+    document.getElementById("resultat").innerHTML = "En attente du résultat";
     document.getElementById("exo1").hidden= true;
     document.getElementById("exo2").hidden= true;
     document.getElementById("exo3").hidden= true;
