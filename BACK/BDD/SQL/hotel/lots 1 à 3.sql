@@ -89,11 +89,10 @@
 
 /*13 - Compter le nombre d’hôtel par station*/
 
-    select sta_nom,  count(hot_id) from station
+    select sta_nom, count(hot_id) from station
     JOIN hotel
     ON hot_sta_id= sta_id
     GROUP BY sta_nom
-
 
 /*14 - Compter le nombre de chambre par station*/
 
