@@ -12,7 +12,7 @@
             <header>
                 <div class="row justify-content-between">
                     <div class="col-lg-3 col mt-2 ">
-                        <img src="images/jarditou_logo.jpg" class="img-fluid" alt="logo" title="logo" >  
+                        <img src="public/images/jarditou_logo.jpg" class="img-fluid" alt="logo" title="logo" >  
                     </div>
                     <h1 class="col-5 align-self-center text-right mr-5 d-none d-lg-block">Tout le jardin</h1>
                 </div>
@@ -41,47 +41,105 @@
                 </div>
             </nav>
             <div class="row">
-                    <img class="col" src="images/promotion.jpg" alt="promotion" title="promotion">
+                    <img class="col" src="public/images/promotion.jpg" alt="promotion" title="promotion">
             </div>  
             <div class=" row m-auto shadow">
                 <section  class="row col ">
                     <p> * ces zones sont obligatoires</p>
                     <hr>
-                    <form class="w-100 p-2" action="http://bienvu.net/script.php" method="GET" onSubmit="return verif(this)">
+                    <form class="w-100 p-2" action="public/php/post.php" method="POST"  onSubmit="return verif(this)">
                         <fieldset>
                             <h1>Vos Coordonnées</h1>
-                            <label for="lastname">Nom* :</label><br><input class="w-100" type="text" placeholder="Veuillez saisir votre nom" name="lastname" id="lastname"><br>
-                            <div class="text-danger" id="errorLastname"></div>
-                            <label class="pt-3" for="firstname">Prénom* :</label><br><input class="w-100" type="text" placeholder="Veuillez saisir votre prénom" name="firstname" id="firstname"><br><br>
-                            <div class="text-danger" id="errorFirstname"></div>
+                            <label for="lastname">Nom* :</label><br><input class="w-100" type="text" placeholder="Veuillez saisir votre nom" name="lastname" id="lastname">
+                            <?php
+                                if(isset($_POST['lastname'])){
+                                    $lastname=$_POST['lastname'];
+                                    if (!preg_match("/^[a-zéèêàâîïA-Z '-]+$/",$lastname)){
+                                        echo '<p class=" text-danger" >*Veuillez entrer un nom valide<p>';
+                                    };
+                                }
+                            ?>
+                            <label class="pt-3" for="firstname">Prénom* :</label><br><input class="w-100" type="text" placeholder="Veuillez saisir votre prénom" name="firstname" id="firstname">
+                            <?php
+                                if(isset($_POST['firstname'])){
+                                    $firstname=$_POST['firstname'];
+                                    if (!preg_match("/^[a-zéèêàâîïA-Z '-]+$/",$firstname)){
+                                        echo '<p class=" text-danger" >*Veuillez entrer un prénom valide<p>';
+                                    };
+                                }
+                            ?>
                             <label>Sexe* :</label><br>
                                 <input class="ml-1 mr-1" type="radio" name="sex" value="Féminin" >Féminin
                                 <input class="ml-3  mr-1" type="radio" name="sex" value="Masculin">Masculin
                                 <input class="ml-3  mr-1" type="radio" name="sex" value="Neutre" checked>Neutre <br>
-                            <label class="pt-3" for="birthday">Date de naissance* :</label><br><input class="w-100" type="date" name="birthday" id="birthday"><br>
-                            <div class="text-danger" id="errorBirthday"></div>
-                            <label class="pt-3" for="code">Code postal* :</label><br><input class="w-100" type="text" placeholder="code postal" name="code" id="code"><br>
-                            <div class="text-danger" id="errorCode"></div>
+                            <label class="pt-3" for="birthday">Date de naissance* :</label><br><input class="w-100" type="date" name="birthday" id="birthday">
+                                <?php
+                                   if(isset($_POST["birthday"])){
+                                    if (!strtotime($_POST["birthday"])){
+                                        echo '<p class=" text-danger" >*Veuillez entrer une date de naissance valide<p>'; 
+                                    }
+                                   }
+                                ?>
+                                
+                            <label class="pt-3" for="code">Code postal* :</label><br><input class="w-100" type="text" placeholder="code postal" name="code" id="code">
+                            <?php
+                                if(isset($_POST['code'])){
+                                    $code=$_POST['code'];
+                                    if (!preg_match("/^[0-9]{5}$/",$code)){
+                                        echo '<p class=" text-danger" >*Veuillez entrer un code postal valide<p>';
+                                    };
+                                }
+                            ?>
                             <label class="pt-3" for="address">Adresse :</label><br><input class="w-100" type="text" placeholder="adresse" name="address" id="address"><br>
-                            <div class="text-danger" id="errorAddress"></div>
+                            <?php
+                                if(isset($_POST['address'])){
+                                    $address=$_POST['address'];
+                                    if (!preg_match("/^[0-9a-zéèêàâîïA-Z ,'-]+$/",$address)){
+                                        echo '<p class=" text-danger" >*Veuillez entrer une adresse valide<p>';
+                                    };
+                                }
+                            ?>
                             <label class="pt-3" for="city">Ville :</label><br><input class="w-100" type="text" placeholder="ville" name="city" id="city"><br>
-                            <div class="text-danger" id="errorCity"></div>
+                            <?php
+                                if(isset($_POST['city'])){
+                                    $city=$_POST['city'];
+                                    if (!preg_match("/^[a-zéèêàâîïA-Z '-]+$/",$city)){
+                                        echo '<p class=" text-danger" >*Veuillez entrer une ville valide<p>';
+                                    };
+                                }
+                            ?>
                             <label class="pt-3" for="mail">Email :</label><br><input class="w-100" type="text" placeholder="dave.loper@afpa.fr" name="mail" id="mail"><br>
-                            <div class="text-danger" id="errorMail"></div>
+                            <?php
+                                if(isset($_POST['mail'])){
+                                    $mail=$_POST['mail'];
+                                    if (!preg_match("/^[0-9a-zA-Z._-]+@[0-9a-zA-Z._-]+[.][a-z]{2,5}$/",$mail)){
+                                        echo '<p class=" text-danger" >*Veuillez entrer une adresse mail valide<p>';
+                                    };
+                                }
+                            ?>
                         </fieldset>
                         <fieldset>
                             <h1 class="pt-3">Votre demande</h1>
-                            <label for="subject">Sujet*: </label><br><input class="w-100" type="text" id="subject" list="liste" placeholder="Veuillez séléctionner un sujet">
-                                <datalist id="liste">
+                            <label for="subject">Sujet*: </label>
+                                <select class="w-100" name="subject" id="liste">
                                     <option>Mes commandes</option>
                                     <option>Questions sur un produit</option>
                                     <option>Réclamations</option>
                                     <option>Autres</option>
-                                </datalist><br>
-                                <div class="text-danger" id="errorSubject"></div>
+                                </select><br>
                             <label class="pt-3" for="question"> Votre question* :</label><br><textarea class="w-100" name="question" id="question"  rows="2" cols="25" placeholder="tapez votre question ici"></textarea>
                         </fieldset><br>
-                        <input type="checkbox" name="validation" id="validation" required><label class="ml-2" for="validation">  J'accepte le traitement informatique de ce formulaire</label><br><br>
+                        <input type="checkbox" name="validation" id="validation" value="Yes" ><label class="ml-2" for="validation">  J'accepte le traitement informatique de ce formulaire</label>
+                        <?php
+                                if(isset($_POST['validation'])){
+                                    $validation=$_POST['validation'];
+                                    if ($validation !="Yes"){
+                                        echo '<p class=" text-danger" >*Veuillez cocher la case<p>';
+                                    };
+                                }else{
+                                    echo '<p class=" text-danger" >*Veuillez accepter le traitement informatique de ce formulaire<p>';
+                                }
+                            ?><br><br>
                         <input class="btn btn-dark btn btn-outline-primary text-white" type="submit" value="Envoyer"> 
                         <input class="btn btn-dark btn btn-outline-primary text-white" type="reset" value="Annuler"><br>
                     </form>
@@ -104,7 +162,6 @@
                     </div>
                 </nav>
             </footer>
-            <script src="contact.js"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
