@@ -1,0 +1,119 @@
+
+html{
+    font-size: 100%;
+}
+
+*{
+    font-size: 1.5vw;
+}
+
+#titre{
+    /*texte*/
+        float: right;
+        position:absolute;
+        width: 100%;
+        text-align:center;
+        font-size: 6vw;
+        margin-top: 1.5vw
+    /*image
+        background-image: url(../images/jarditou_logo.jpg); 
+        background-repeat:no-repeat; 
+        background-size: 200pt;      */           
+
+    }
+#logo{
+    margin-top: 0.5vw;
+    height: 10vw;
+
+}
+
+/* menus */
+    nav{
+        background-color: black;
+        padding: 1pt;
+        margin-top: 5pt;
+        margin-bottom: 5pt;
+  
+     
+
+    }
+    nav a{
+        color: white;
+        font-size: 1vw;
+    }
+
+    nav li{
+        display: inline;
+        font-size: 1vw;
+        
+}
+#promotion{
+    width:100%
+}
+/* taille titre h1*/
+
+    h1{
+        font-size: 2.5vw;
+    }
+
+/*mise en forme aside */
+    .main {
+        display: flex;
+
+    }
+
+    #section{
+
+        width: 70%;
+        padding-right: .3rem;
+    }
+    aside {
+        width: 30%;
+        padding-left: .5rem;
+        float: right;
+        color: black;
+        background-color: lightgray;
+    }
+
+/*mise en forme SANS aside */
+    .sans_aside{
+        width: 100%;
+}
+
+/*tableau*/
+    .tableau{
+        
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: max-content;
+        border-collapse: collapse;
+    }
+
+    thead tr td{
+        font-weight: bold;
+        padding-top: 10px;
+        padding-bottom: 10pt;
+        border-bottom: 0.4vw solid black;  
+    }
+
+    td{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        min-width: 10vw;
+        border: 0.2vw solid black;     
+    }
+    tbody img{
+        width: 5vw;
+        height: auto;
+    }   
+  
+/*formulaire*/
+
+[type="radio"]{
+     height: 1vw;
+     width: 1vw;
+     vertical-align: -0.15vw;
+}

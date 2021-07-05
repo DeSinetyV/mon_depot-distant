@@ -1,0 +1,33 @@
+<?php
+include 'connexion_bdd.php';
+$pdo = pdo_connect_mysql();
+$msg = '';
+echo $_GET['pro_id'];
+// Check if the contact id exists, for example update.php?id=1 will get the contact with the id of 1
+if (isset($_GET['pro_id'])) {
+    if (!empty($_POST)) {
+        // This part is similar to the create.php, but instead we update a record and not insert
+        $id = isset($_POST['pro_id']) ? $_POST['pro_id'] : NULL;
+        $ref = isset($_POST['pro_ref']) ? $_POST['pro_ref'] : '';
+        $libelle = isset($_POST['pro_libelle']) ? $_POST['pro_libelle'] : '';
+        $prix= isset($_POST['pro_prix']) ? $_POST['pro_prix'] : '';
+        $stock = isset($_POST['pro_stock']) ? $_POST['pro_stock'] : '';
+        $couleur = isset($_POST['pro_couleur']) ? $_POST['pro_couleur'] : '';
+        $created = isset($_POST['pro_d_ajout']) ? $_POST['pro_d_ajout'] : date('Y-m-d H:i:s');
+        // Update the record
+        $stmt = $pdo->prepare('UPDATE produits SET pro_id = ?, pro_ref = ?, pro_libelle = ?, pro_prix = ?, pro_stock = ?, pro_couleur = ?, pro_d_ajout = ? WHERE id = ?');
+        $stmt->execute([$id, $ref,  $libelle, $prix, $stock, $couleur, $created, $_GET['id']]);
+        $msg = 'Updated Successfully!';  
+      }
+        // Get the contact from the contacts table
+        $stmt = $pdo->prepare('SELECT * FROM produits WHERE id = ?');
+        $stmt->execute([$_GET['id']]);
+        $produit = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$produits) {
+            exit('Contact doesn\'t exist with that ID!');
+        }
+    } else {
+        exit('No ID specified!');
+    }
+
+?>
