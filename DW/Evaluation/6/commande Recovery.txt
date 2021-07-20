@@ -1,0 +1,1 @@
+C:\wamp64\bin\mysql\mysql8.0.25\bin>mysql --user=root < C:\Users\80010-17-01\Desktop\AFPA\00_DEPOSITORY\DW\backup\backup_gescom_afpa.sql
