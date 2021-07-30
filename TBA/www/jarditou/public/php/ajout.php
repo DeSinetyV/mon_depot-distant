@@ -43,55 +43,47 @@
             <div class="row">
                 <img class="col" src="../images/promotion.jpg" alt="promotion" title="promotion">
         </div>  
+
+
+            <div class="container-fluid">
+
 <?php
    // var_dump($_POST);
     //var_dump($_GET);
-    $id = $_GET['pro_id'];
     require "connexion_bdd.php"; // Connexion base
     $db = pdo_connect_mysql();
-    $requete = "SELECT * FROM produits
-                JOIN categories ON pro_cat_id = cat_id
-                WHERE pro_id = '$id'";
-    $result = $db->query($requete)->fetch(PDO::FETCH_OBJ);
-
     $categories="SELECT cat_nom FROM categories";
     $result_categories = $db->query($categories)->fetchAll(PDO::FETCH_OBJ);
 
-
-    //$test = $db->prepare("SELECT * FROM produits Where pro_id = ?");
-    //$test->execute([$id, $ref,  $libelle, $prix, $stock, $couleur, $created, $_GET['id']]);
+    $new_id="SELECT pro_id from produits order by pro_id desc LIMIT 1";
+    $id = $db->query($new_id)->fetch(PDO::FETCH_OBJ);
 
 ?>
 
-            <div class="container-fluid">
-            <?php $image= '../images/'.$result->pro_id.'.jpg';
-                            echo '<br><img class="col-3 d-block mx-auto" src='.$image.' ><br>'?>
-    <form class="col-6 ml-auto mr-auto" action="script_modif.php" method="POST">
-        <label for="name">ID</label><br>
-        <input class="w-100 " type="text" name="id" placeholder="" value="<?=$result->pro_id?>" id="id" readonly><br><br>
-        <label for="name">Référence</label><br>
-        <input class="w-100 " type="text" name="reference" placeholder="" value="<?=$result->pro_ref?>" id="reference"><br><br>
-        <label for="id">Catégorie</label><br>
-        <select class="w-100"  name="categorie" placeholder="<?=$result->cat_nom?>" value="<?=$result->cat_nom?>" id="categorie">
-            <option><?=$result->cat_nom?></option>;
+    <form class="col-6 ml-auto mr-auto mt-4" action="script_ajout.php" method="POST">
+        <label for="id">ID</label><br>
+        <input class="w-100 " type="text" name="id" placeholder="<?=$id->pro_id + 1?>" value="" id="id" ><br><br>
+        <label for="reference">Référence</label><br>
+        <input class="w-100 " type="text" name="reference" placeholder="" value="" id="reference"><br><br>
+        <label for="categorie">Catégorie</label><br>
+        <select class="w-100"  name="categorie" placeholder="" value="" id="categorie">
             <?php foreach ($result_categories as  $categorie){
-                echo("<option>$categorie->cat_nom</option>");};?>
+            echo("<option>$categorie->cat_nom</option>");};?>
 
         </select><br><br>
         <label for="email">Libellé</label><br>
-        <input class="w-100 " type="text" name="libelle" placeholder="" value="<?=$result->pro_libelle?>" id="libelle"><br><br>
+        <input class="w-100" type="text" name="libelle" placeholder="" value="" id="libelle"><br><br>
         <label for="phone">Description</label><br>
-        <textarea class="w-100" name="description" placeholder="" value="" id="description"><?=$result->pro_description?></textarea><br><br>
+        <textarea class="w-100" name="description" placeholder="" value="" id="description"></textarea><br><br>
         <label for="email">Prix</label><br>
-        <input class="w-100" type="text" name="prix" placeholder="" value="<?=$result->pro_prix?>" id="prix"><br><br>
+        <input class="w-100" type="text" name="prix" placeholder="" value="" id="prix"><br><br>
         <label for="email">Stock</label><br>
-        <input class="w-100" type="text" name="stock" placeholder="" value="<?=$result->pro_stock?>" id="stock"><br><br>
+        <input class="w-100" type="text" name="stock" placeholder="" value="" id="stock"><br><br>
         <label for="email">Couleur</label><br>
-        <input class="w-100" type="text" name="couleur" placeholder="" value="<?=$result->pro_couleur?>" id="couleur"><br><br>
+        <input class="w-100" type="text" name="couleur" placeholder="" value="" id="couleur"><br><br>
         <label for="email">Date d'ajout</label><br>
-        <input class="w-100" type="text" name="ajout" placeholder="" value="<?=$result->pro_d_ajout?>" id="ajout" disabled="disabled"><br><br>
-        <label for="email">Date de modification</label><br>
-        <input class="w-100" type="text" name="modification" placeholder="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>" id="modification" readonly><br><br>
+        <input class="w-100" type="text" name="ajout" placeholder="<?=date('Y-m-d')?>" value="" id="ajout" readonly><br><br>
+
 
 
         <a class="btn btn-secondary mr-5 display-2" onclick="history.back()">Retour</a>

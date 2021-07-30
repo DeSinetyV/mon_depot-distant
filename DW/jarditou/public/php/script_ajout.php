@@ -1,21 +1,33 @@
 <?php
+
+
+//dans ce fichier, nous récupérons les informations pour réaliser la requête de création
+
+//récupération des informations passées en POST
+
 var_dump($_POST);
-$error = NULL;
-
-
-//dans ce fichier, nous récupérons les informations pour réaliser la requête de modification : UPDATE
-
-//récupération des informations passées en POST, nécessaires à la modification
-var_dump($_POST);
-$id=$_POST['id'];
+$id=intval($_POST['id']);
 $reference=$_POST['reference'];
 $categorie=$_POST['categorie'];
 $libelle=$_POST['libelle'];
 $description=$_POST['description'];
-$prix=$_POST['prix'];
-$stock=$_POST['stock'];
+$prix=intval($_POST['prix']);
+$stock=intval($_POST['stock']);
 $couleur=$_POST['couleur'];
-$modification=$_POST['modification'];
+$ajout=$_POST['ajout'];
+
+
+
+
+//$id=501;
+//$reference="qeuttrjytrj";
+//$categorie="outillage";
+//$libelle="jhfkjhfkhyc";
+//$description=",hgccj,hgc,h";
+//$prix=120;
+//$stock=100;
+//$couleur="blouge";
+//$ajout="2021-06-05";
 
 //**********     connection à la base de données    **********
 
@@ -25,32 +37,39 @@ $modification=$_POST['modification'];
 
 require "connexion_bdd.php";
 $db = pdo_connect_mysql();
-
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//construction de la requête UPDATE sans injection SQL
+//construction de la requête INSERT sans injection SQL
+
+
+
 try{
-$id_categorie = "SELECT cat_id FROM categories
-                    WHERE cat_nom = '$categorie'";
+    $id_categorie = "SELECT cat_id FROM categories
+    WHERE cat_nom = '$categorie'";
 $id_categorie = $db->query($id_categorie)->fetch(PDO::FETCH_OBJ);
 $id_categorie =intval($id_categorie->cat_id);
 var_dump($id_categorie);
+var_dump($prix);
 
-$update="UPDATE produits JOIN categories ON pro_cat_id= cat_id SET pro_ref=:pro_ref, pro_cat_id=:pro_cat_id, pro_libelle=:pro_libelle, pro_description=:pro_description,
-pro_prix=:pro_prix, pro_stock=:pro_stock, pro_couleur=:pro_couleur, pro_d_modif=:pro_d_modif WHERE pro_id= :pro_id";
 
-$requete = $db->prepare($update);
+$insert="insert INTO produits (pro_id,pro_cat_id, pro_ref, pro_libelle, pro_description,pro_prix, pro_stock, pro_couleur, pro_d_ajout) 
+VALUES  (:pro_id, :pro_cat_id, :pro_ref, :pro_libelle, :pro_description, :pro_prix, :pro_stock, :pro_couleur, :pro_d_ajout)";
+
+
+
+$requete = $db->prepare($insert);
 
 $requete->bindValue(':pro_id', $id, PDO::PARAM_INT);
 $requete->bindValue(':pro_ref', $reference, PDO::PARAM_STR);
-$requete->bindValue(':pro_cat_id', $id_categorie , PDO::PARAM_INT);
+$requete->bindValue(':pro_cat_id', $id_categorie, PDO::PARAM_INT);
 $requete->bindValue(':pro_libelle', $libelle, PDO::PARAM_STR);
 $requete->bindValue(':pro_description', $description, PDO::PARAM_STR);
 $requete->bindValue(':pro_prix', $prix, PDO::PARAM_INT);
 $requete->bindValue(':pro_stock', $stock, PDO::PARAM_INT);
 $requete->bindValue(':pro_couleur', $couleur, PDO::PARAM_STR);
-$requete->bindValue(':pro_d_modif', $modification, PDO::PARAM_STR);
+$requete->bindValue(':pro_d_ajout', $ajout, PDO::PARAM_STR);
 
-//print_r($requete)
+
+//print_r($requete);
 $requete->execute();
 
 //libère la connection au serveur de BDD
