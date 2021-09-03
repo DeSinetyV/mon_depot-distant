@@ -15,7 +15,7 @@ $description=$_POST['description'];
 $prix=$_POST['prix'];
 $stock=$_POST['stock'];
 $couleur=$_POST['couleur'];
-$modification=$_POST['modification'];
+
 
 //**********     connection à la base de données    **********
 

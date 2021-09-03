@@ -51,17 +51,27 @@
             <?php
 
                 var_dump($_GET);
-                $recherche = $_GET['recherche'];
+                
                 include 'public/php/connexion_bdd.php';
                 // Connect to MySQL database
                 $pdo = pdo_connect_mysql();
 
                 // Prepare the SQL statement and get records from our products table
+                if (isset($_GET['recherche'])){
+                    $recherche = $_GET['recherche'];
+                    $produits = $pdo->prepare("SELECT * FROM produits 
+                                            JOIN categories ON pro_cat_id = cat_id
+                                            WHERE cat_nom LIKE '%$recherche%' OR pro_libelle LIKE '%$recherche%' 
+                                            ORDER BY pro_id");
+                    $produits->execute();
+
+                }else{
+
                 $produits = $pdo->prepare("SELECT * FROM produits 
                                            JOIN categories ON pro_cat_id = cat_id
                                            ORDER BY pro_id");
                 $produits->execute();
-
+                }
                 ?>
 
 

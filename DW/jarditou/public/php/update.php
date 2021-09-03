@@ -66,8 +66,16 @@
             <div class="container-fluid">
             <?php $image= '../images/'.$result->pro_id.'.jpg';
                             echo '<br><img class="col-3 d-block mx-auto" src='.$image.' ><br>'?>
+
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="fichier">
+            <input class="btn btn-dark btn btn-outline-primary text-white" type="submit" value="Envoyer"> 
+
     <form class="col-6 ml-auto mr-auto" action="script_modif.php" method="POST">
-        <label for="name">ID</label><br>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="fichier">
+            <input class="btn btn-dark btn btn-outline-primary text-white" type="submit" value="Envoyer"> 
+        <label for="name">ID1</label><br>
         <input class="w-100 " type="text" name="id" placeholder="" value="<?=$result->pro_id?>" id="id" readonly><br><br>
         <label for="name">Référence</label><br>
         <input class="w-100 " type="text" name="reference" placeholder="" value="<?=$result->pro_ref?>" id="reference"><br><br>
