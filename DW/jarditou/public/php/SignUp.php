@@ -1,7 +1,3 @@
-<?php session_start();
-// $_SESSION["login"] ='test1';
-// $_SESSION["role"] ='gestionnaire';
-var_dump($_SESSION);?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,7 +5,7 @@ var_dump($_SESSION);?>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <title >Read</title>   
+        <title >SignUp</title>   
     </head>
     <body> 
         <div class="container-fluid">
@@ -43,50 +39,35 @@ var_dump($_SESSION);?>
             <div class="row">
                 <img class="col" src="../images/promotion.jpg" alt="promotion" title="promotion">
         </div>  
-<?php
 
-$id = $_GET['pro_id'];
-    require "connexion_bdd.php"; // Connexion base
-    $db = pdo_connect_mysql();
-    $requete = "SELECT * FROM produits
-                JOIN categories ON pro_cat_id = cat_id
-                WHERE pro_id = '$id'";
-    $result = $db->query($requete)->fetch(PDO::FETCH_OBJ);
+        <?php
+             
+             include 'connexion_bdd.php';
+             // Connect to MySQL database
+             $pdo = pdo_connect_mysql();
 
-    //$test = $db->prepare("SELECT * FROM produits Where pro_id = ?");
-    //$test->execute([$id, $ref,  $libelle, $prix, $stock, $couleur, $created, $_GET['id']]);
+            $accessrights = $pdo->prepare("SELECT * FROM accessright
+            ORDER BY Acc_id  DESC");
+            $accessrights->execute();
 
 ?>
 
-
-            <div class="container-fluid">
-            <?php $image= '../images/'.$result->pro_id;
-                            echo '<br><img class="col-3 d-block mx-auto" src='.$image.' ><br>'?>
-    <form class="col-6 ml-auto mr-auto" action="update.php?pro_id=<?=$result->pro_id?>" method="post">
-        <label for="reference">Référence</label><br>
-        <input class="w-100 " type="text" name="reference" placeholder="" value="<?=$result->pro_ref?>" id="reference" disabled="disabled"><br><br>
-        <label for="categorie">Catégorie</label><br>
-        <input class="w-100" type="text" name="categorie" placeholder="" value="<?=$result->cat_nom?>" id="categorie" disabled="disabled"><br><br>
-        <label for="libelle">Libellé</label><br>
-        <input class="w-100" type="text" name="libelle" placeholder="" value="<?=$result->pro_libelle?>" id="libelle" disabled="disabled"><br><br>
-        <label for="description">Description</label><br>
-        <textarea class="w-100" name="description" placeholder="" value="" id="description" disabled="disabled"><?=$result->pro_description?></textarea><br><br>
-        <label for="prix">Prix</label><br>
-        <input class="w-100" type="text" name="prix" placeholder="" value="<?=$result->pro_prix?>" id="prix" disabled="disabled"><br><br>
-        <label for="stock">Stock</label><br>
-        <input class="w-100" type="text" name="stock" placeholder="" value="<?=$result->pro_stock?>" id="stock" disabled="disabled"><br><br>
-        <label for="couleur">Couleur</label><br>
-        <input class="w-100" type="text" name="couleur" placeholder="" value="<?=$result->pro_couleur?>" id="couleur" disabled="disabled"><br><br>
-        <label for="ajout">Date d'ajout</label><br>
-        <input class="w-100" type="text" name="ajout" placeholder="" value="<?=$result->pro_d_ajout?>" id="ajout" disabled="disabled"><br><br>
-        <input class="w-100" type="hidden" name="extension" placeholder="" value="<?=$result->pro_photo?>" id="ajout" readonly><br><br>
+    <form  action="addUser.php" method="POST">
+        <label class="mt-3" for="login">Login</label><br>
+        <input class="w-50 " type="text" name="login" placeholder="" id="login" >
+        <?php if (isset($_GET['doublon'])) { echo '<br><i class="text-danger"> Ce login existe déjà </i>'; } ?><br><br>
+        <label for="password">password</label><br>
+        <input class="w-50 " type="text" name="password" placeholder="" id="password" ><br><br>
+        <fieldset>
+            <h4 class="pt-1">Vos droits</h4>
+                <select class="w-50" name="role" id="liste">
+                    <?php foreach($accessrights as $accessright): ?>
+                    <option><?= $accessright['Acc_name']?></option>
+                    <?php endforeach; ?>
+                </select><br>
+        </fieldset><br>
         <a class="btn btn-secondary mr-5 display-2" onclick="history.back()">Retour</a>
-<?php if($_SESSION['role']== 'admin' || $_SESSION['role']== 'gestionnaire'): ?>
-        <input class="btn btn-warning mr-5 display-2" type="submit" value="Mettre a jour">
-<?php endif; ?>
-<?php if($_SESSION['role']== 'admin'): ?>
-        <a class="btn btn-danger mr-5 display-2" href="script_delete.php?id=<?=$result->pro_id?>" onclick="return confirm('Are you sure?')">supprimer</a>
-<?php endif; ?>
+        <input class="btn btn-success display-2" type="submit" value="Enregistrer">
 
     </form>
         <?php 

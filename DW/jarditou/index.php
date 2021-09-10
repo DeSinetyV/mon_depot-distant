@@ -1,4 +1,6 @@
 <?php
+session_start();
+$title= 'Accueil';
 include ("public/php/entete.php");
 ?>
             <div class="row m-auto shadow">

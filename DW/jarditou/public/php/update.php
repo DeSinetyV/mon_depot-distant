@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,10 +35,6 @@
                             <a class="nav-link" href="../../contact.php">Contact</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Votre promotion" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-                    </form>
                 </div>
             </nav>
             <div class="row">
@@ -63,19 +60,16 @@
 
 ?>
 
-            <div class="container-fluid">
-            <?php $image= '../images/'.$result->pro_id.'.jpg';
-                            echo '<br><img class="col-3 d-block mx-auto" src='.$image.' ><br>'?>
+            <div class="col-6 ml-auto mr-auto" class="container-fluid">
+            <?php $image= '../images/'.$result->pro_id;
+                            echo '<br><img class="col-6 d-block mx-auto" src='.$image.' ><br>'?>
 
-            <form action="upload.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="fichier">
-            <input class="btn btn-dark btn btn-outline-primary text-white" type="submit" value="Envoyer"> 
 
-    <form class="col-6 ml-auto mr-auto" action="script_modif.php" method="POST">
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="fichier">
-            <input class="btn btn-dark btn btn-outline-primary text-white" type="submit" value="Envoyer"> 
-        <label for="name">ID1</label><br>
+
+
+    <form  action="script_modif.php" method="POST" enctype="multipart/form-data">
+        <input class="ml-5" type="file" name="fichier"><br><br>
+        <label for="name">ID</label><br>
         <input class="w-100 " type="text" name="id" placeholder="" value="<?=$result->pro_id?>" id="id" readonly><br><br>
         <label for="name">Référence</label><br>
         <input class="w-100 " type="text" name="reference" placeholder="" value="<?=$result->pro_ref?>" id="reference"><br><br>
@@ -86,20 +80,21 @@
                 echo("<option>$categorie->cat_nom</option>");};?>
 
         </select><br><br>
-        <label for="email">Libellé</label><br>
+        <label for="libelle">Libellé</label><br>
         <input class="w-100 " type="text" name="libelle" placeholder="" value="<?=$result->pro_libelle?>" id="libelle"><br><br>
-        <label for="phone">Description</label><br>
+        <label for="description">Description</label><br>
         <textarea class="w-100" name="description" placeholder="" value="" id="description"><?=$result->pro_description?></textarea><br><br>
-        <label for="email">Prix</label><br>
+        <label for="prix">Prix</label><br>
         <input class="w-100" type="text" name="prix" placeholder="" value="<?=$result->pro_prix?>" id="prix"><br><br>
-        <label for="email">Stock</label><br>
+        <label for="stock">Stock</label><br>
         <input class="w-100" type="text" name="stock" placeholder="" value="<?=$result->pro_stock?>" id="stock"><br><br>
-        <label for="email">Couleur</label><br>
+        <label for="couleur">Couleur</label><br>
         <input class="w-100" type="text" name="couleur" placeholder="" value="<?=$result->pro_couleur?>" id="couleur"><br><br>
-        <label for="email">Date d'ajout</label><br>
-        <input class="w-100" type="text" name="ajout" placeholder="" value="<?=$result->pro_d_ajout?>" id="ajout" disabled="disabled"><br><br>
-        <label for="email">Date de modification</label><br>
+        <label for="ajout">Date d'ajout</label><br>
+        <input class="w-100" type="text" name="ajout" placeholder="" value="<?=$result->pro_d_ajout?>" id="ajout" readonly><br><br>
+        <label for="modification">Date de modification</label><br>
         <input class="w-100" type="text" name="modification" placeholder="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>" id="modification" readonly><br><br>
+        <input class="w-100" type="hidden" name="extension" placeholder="" value="<?=$result->pro_photo?>" id="ajout" readonly><br><br>
 
 
         <a class="btn btn-secondary mr-5 display-2" onclick="history.back()">Retour</a>

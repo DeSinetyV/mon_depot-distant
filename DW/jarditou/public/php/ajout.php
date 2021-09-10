@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,10 +35,6 @@
                             <a class="nav-link" href="../../contact.php">Contact</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Votre promotion" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-                    </form>
                 </div>
             </nav>
             <div class="row">
@@ -48,7 +45,7 @@
             <div class="container-fluid">
 
 <?php
-   // var_dump($_POST);
+    //var_dump($_POST);
     //var_dump($_GET);
     require "connexion_bdd.php"; // Connexion base
     $db = pdo_connect_mysql();
@@ -60,9 +57,11 @@
 
 ?>
 
-    <form class="col-6 ml-auto mr-auto mt-4" action="script_ajout.php" method="POST">
+
+    <form class="col-6 ml-auto mr-auto mt-4" action="script_ajout.php" method="POST" enctype="multipart/form-data">
+        <input class="ml-5" type="file" name="fichier"><br><br>
         <label for="id">ID</label><br>
-        <input class="w-100 " type="text" name="id" placeholder="<?=$id->pro_id + 1?>" value="" id="id" ><br><br>
+        <input class="w-100 " type="text" name="id" placeholder="<?=$id->pro_id + 1?>" value="<?=$id->pro_id + 1?>" id="id" ><br><br>
         <label for="reference">Référence</label><br>
         <input class="w-100 " type="text" name="reference" placeholder="" value="" id="reference"><br><br>
         <label for="categorie">Catégorie</label><br>
