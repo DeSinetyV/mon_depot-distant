@@ -1,0 +1,24 @@
+.count {
+    display: inline-block;
+    font-size: 1.7em;
+    list-style-type: none;
+    padding: 1em;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
+.whiteOnRed {
+    color: #f7f9f2;
+    background-color: #406c35;
+}
+.blueOnSaffron {
+    color: #f7f9f2;
+    background-color: #a4af97;
+}
+.blueOnYellow {
+    color: #f7f9f2;
+    background-color:  #f23942;
+}
+.whiteOnGreen {
+    color: #f7f9f2;
+    background-color: #941d26;
+}
