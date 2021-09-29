@@ -11,12 +11,12 @@ class Magasin
 
 
 
-    public function __construct($nom_mag='test', $adresse,$codePostal, $ville){
+    public function __construct($nom_mag='test', $adresse,$codePostal, $ville,$restauration){
         $this->_nom_mag = $nom_mag;
         $this->_adresse = $adresse;
         $this->_codePostal = $codePostal;
         $this->_ville = $ville;
-
+        $this->_restauration=$restauration;
   
     }
 
@@ -48,6 +48,12 @@ class Magasin
         return $this->_ville= $sVille; 
     }
 
+    public function getRestauration(){
+        return $this->_restauration; 
+    }
+    public function setRestauration($srestauration){
+        return $this->_restauration= $srestauration; 
+    }
 
 }
 
