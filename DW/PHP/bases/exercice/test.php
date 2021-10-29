@@ -9,8 +9,8 @@
 <body>
 <?php
 
-use function PHPSTORM_META\type;
 
+echo '/////////////////////////////////////////////////////////////  V1 /////////////////////////////////////////////<br>';
 function test($X)
 {
  
@@ -45,7 +45,74 @@ if($coin01>0)echo $coin01." coins of 0.1<br>";
 }
 
 
-test(203);
+test(203.50);
+
+echo '/////////////////////////////////////////////////////////////  V2 /////////////////////////////////////////////<br>';
+
+?>
+
+<form method="POST" name="form1" id="form1" action="test.php">
+    <label for="price">Entrez la valeur a rendre:</label><br>
+    <input type="text" id="price" name="price" >
+    <input type="submit" name="value" value="calculer"/>
+</form>
+
+<?php
+
+function test2($price){
+
+ 
+  $values=[50,20,10,5,2,1,0.50,0.20,0.10,0.05,0.02,0.01];
+
+  $i=0;   // coin ou banknote
+  $ii=0;  // virgule ou pas
+
+  echo "You need :<br>";
+  foreach ($values as $value){
+
+  //  echo $price/$value.'<br>';
+    $rendu=floor($price/$value); $price = $price -$rendu*$value;   
+  //  echo $price.'<br>';
+    if($rendu>0){
+      if ($ii >0){echo ",<br>";}  // virgule puis retour a la ligne si ce n'est pas la 1ere valeur retourné
+      echo $rendu;
+        if($i > 3){               // billets ou pièces
+          if($rendu==1){          // "coins" ou "coin"
+            echo " coin of ";
+          }else{
+            echo " coins of ";
+          }
+        }else{ 
+          if($rendu==1){          //banknote ou banknotes
+            echo " banknote of ";
+          }else{
+            echo " banknotes of ";
+          }
+        }
+        if($i < 6){               // euros ou centimes
+        echo $value." euros";
+        }else{
+        echo ($value*100)." cents";
+        }
+        $ii++;
+    }
+    $i++;
+  }
+  if ($ii ==0) echo "rien a rendre...";
+  echo".";
+  }
+
+  if(isset($_POST['price'])) {
+    $price=$_POST['price'];
+    $chaine="#^[0-9]*(\.[0-9]{0,2})?$#";
+
+    if(!preg_match($chaine, $price)){
+      echo "veuiller rentrer un prix correct<br>";
+    }else{test2($price);};
+   
+   // var_dump($_POST);
+  }
+
 ?>
 
 
