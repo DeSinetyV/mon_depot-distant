@@ -1,0 +1,5 @@
+mysqldump --user=admin --password=root papyrus > ./Desktop/CDA/mise_en_place_BDD/sauvegardes/backup_papyrus.sql
+
+
+cat ./Desktop/CDA/mise_en_place_BDD/sauvegardes/backup_papyrus.sql | mysql --user=admin --password=root new_papyrus
+
