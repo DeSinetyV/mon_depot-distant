@@ -106,3 +106,31 @@ WHERE companyname = 'Du monde entier'
 /*10 –Quel est le délai moyen de livraison en jours?*/
 
 SELECT ROUND(AVG(DATEDIFF(shippeddate,orderdate))) FROM orders
+
+
+
+DELIMITER |
+
+    CREATE PROCEDURE lastcommande(In company varchar(40))
+    BEGIN
+
+    SELECT MAX(orderdate) FROM customers
+    JOIN orders
+    ON customers.customerid = orders.customerid
+    WHERE companyname = company;
+
+    END |
+
+
+    CREATE PROCEDURE delailivraison()
+    BEGIN
+
+    SELECT ROUND(AVG(DATEDIFF(shippeddate,orderdate))) FROM orders
+
+    END |
+
+DELIMITER ;
+
+call lastcommande('Du monde entier');
+call lastcommande('Folies gourmandes');
+call delailivraison();
