@@ -1,27 +1,7 @@
--- 1 - Liste des contacts français :
 
--- 2 - Produits vendus par le fournisseur « Exotic Liquids » :
-
--- 3 - Nombre de produits vendus par les fournisseurs Français dans l’ordre décroissant
-
--- 4 - Liste des clients Français ayant plus de 10 commandes :
-
--- 5 - Liste des clients ayant un chiffre d’affaires > 30.000 
-
--- 6 – Liste des pays dont les clients ont passé commande de produits fournis par « Exotic
--- Liquids » :
-
--- 7 – Montant des ventes de 1997 :
-
--- 8 – Montant des ventes de 1997 mois par mois :
-
--- 9 – Depuis quelle date le client « Du monde entier » n’a plus commandé ?
-
--- 10 – Quel est le délai moyen de livraison en jours ?
-
-
-
-
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////// Requêtes d'intérrogation sur la base NorthWind //////////////////////////////////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 
 /*  1 -Liste des contacts français:  */
@@ -109,6 +89,11 @@ SELECT ROUND(AVG(DATEDIFF(shippeddate,orderdate))) FROM orders
 
 
 
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////////////////////////////////// Procédures stockées//////////////////////////////////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
 DELIMITER |
 
     CREATE PROCEDURE lastcommande(In company varchar(40))
@@ -134,3 +119,45 @@ DELIMITER ;
 call lastcommande('Du monde entier');
 call lastcommande('Folies gourmandes');
 call delailivraison();
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////// Mise en place d'une règle de gestion//////////////////////////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+ DELIMITER |
+    CREATE TRIGGER samecountry before insert on `order details`
+    FOR EACH ROW
+    BEGIN
+       Declare id_o int;
+       declare id_p int;
+       declare suppliercountry varchar(15);
+       declare clientcountry varchar(15);
+       set id_o = New.orderiD;
+       set id_p = New.productID;
+       set suppliercountry =(SELECT country From suppliers
+                            join products on suppliers.SupplierID= products.SupplierID
+                            where products.productID = id_p
+                            );
+        set clientcountry = (SELECT country From customers
+                            join orders on orders.CustomerID = customers.customerid
+                            where orders.orderiD = id_o
+                            );
+        if suppliercountry <> clientcountry then
+                SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = ' Destinataire et fournisseur dans des pays différents !';
+end if;
+    END |
+DELIMITER ;
+
+
+produit 25
+supplier 11
+client ALFKI
+Commande 11078
+
+
+
+
+
+from suppliers
+join products
+join `order details` on `order details`.orderid = products.productid
